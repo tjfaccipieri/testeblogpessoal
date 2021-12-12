@@ -1,0 +1,27 @@
+.fundoVerde{
+  background-color: var(--verde);
+  min-height: 100vh;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+a {
+  color: var(--azul);
+}
+
+label {
+  font-family: 'Poppins', sans-serif;;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.entrar {
+  background-color: var(--verde);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 1.5rem;
+}
