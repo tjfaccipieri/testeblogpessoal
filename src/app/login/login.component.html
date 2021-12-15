@@ -5,7 +5,9 @@
         <h2>Blog Pessoal</h2>
         <p>Compartilhe seu dia, faça <br> anotações e crie lembretes</p>
       </div>
-      <img src="https://i.imgur.com/c9PZshw.png" alt="Imagem de Login" width="75%">
+      <div class="d-flex justify-content-center">
+        <img src="https://i.imgur.com/c9PZshw.png" alt="Imagem de Login" width="75%">
+      </div>
     </div>
 
     <div class="col-md-6 d-flex flex-column justify-content-center">
@@ -16,14 +18,14 @@
         <form>
           <div>
             <label for="usuario">Usuário:</label>
-            <input type="text" name="usuario" id="usuario" class="form-control"> 
+            <input type="text" name="usuario" id="usuario" class="form-control my-2"> 
           </div>
           <div>
             <label for="usuario">Senha:</label>
-            <input type="password" name="senha" id="senha" class="form-control"> 
+            <input type="password" name="senha" id="senha" class="form-control my-2"> 
           </div>
           <div id="erro"></div>
-          <button type="submit" class="btn entrar" (click)='entrar()'>Entrar</button>
+          <button type="submit" class="btn entrar w-100 mt-4" (click)='entrar()'>Entrar</button>
         </form>
       </div>
     </div>

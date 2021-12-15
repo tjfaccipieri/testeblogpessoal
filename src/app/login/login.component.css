@@ -14,7 +14,6 @@ a {
 label {
   font-family: 'Poppins', sans-serif;;
   font-weight: 500;
-  margin: 0.5rem 0;
 }
 
 .entrar {
@@ -22,6 +21,9 @@ label {
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;;
   font-weight: 500;
-  width: 100%;
-  margin-top: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.entrar:hover {
+  background-color: #15978a;
 }
