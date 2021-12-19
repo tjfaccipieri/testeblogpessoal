@@ -25,5 +25,5 @@ label {
 }
 
 .cadastrar:hover {
-  background-color: #15978a;
+  background-color: var(--verde-hover);
 }
