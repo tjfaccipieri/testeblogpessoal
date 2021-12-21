@@ -76,3 +76,13 @@ label {
   font-weight: 500;
   margin: 5px 0;
 }
+
+.redesSociais {
+  margin-top: 30vh;
+}
+
+.fa {
+  color: var(--azul);
+  font-weight: bold;
+  font-size: 3rem;
+}

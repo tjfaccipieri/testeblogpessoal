@@ -1,8 +1,7 @@
-<!-- ! navs não estão funcionando ainda... vai e não volta -->
 <div class="container-fluid d-flex mt-2 justify-content-center">
     <!-- Conteudo da sidebar esquerda -->
-  <div class="col-md-3 pt-3 sticky-top">
-    <div class="w-75">
+  <div class="col-md-3  ">
+    <div class="w-75 pt-3 sticky-top">
       <div class="d-flex justify-content-around align-items-center">
         <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
         <p class='textoPerfil m-0'>Thiago Faccipieri</p>
@@ -26,10 +25,10 @@
       <div id='novaPostagem'>
         <p class='textoPerfil'>Fazer uma postagem</p>
         <div class="row">
-          <div class="col-1">
+          <div class="col-1 me-3">
             <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
           </div>
-          <div class="col-11">
+          <div class="col-10">
             <form class='d-flex w-100 flex-column'>
               <div class="form-group">
                 <label for="titulo">Titulo:</label>
@@ -82,7 +81,8 @@
                 <p class="ms-auto">15/12/2021 às 17:30</p>
               </div>
             </div>
-            
+            <!-- ! card da postagem -->
+
             <div class="cardPostagem mb-3">
               <div class='d-flex align-items-center'>
                 <div class="col-1">
@@ -133,7 +133,21 @@
   </div>
       <!-- restante do conteudo da Nav padrão do bootstrap -->
 
-<!-- sidebar da direita -->
-<div class="col-md-3"></div>
-<!-- sidebar da direita -->
+  <!-- sidebar da direita -->
+  <div class="col-md-3 ">
+    <div class="sticky-top">
+      <div class="row pt-3 mb-5">
+        <input type="text" placeholder="Pesquise uma postagem" class="form-control cardPostagem p-2">
+      </div>
+      <div class="redesSociais  d-flex  flex-column align-items-center justify-content-center">
+        <p class="textoPerfil text-center">Siga-nos nas <br> redes sociais</p>
+        <hr class='w-100'>
+        <i class="fa fa-instagram mb-2"></i>
+        <i class="fa fa-facebook-f fa-2x"></i>
+        <hr class='w-100'>
+        <p class="text-center">&copy; 2021 Copyright: <br> brasil.generation.org</p>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar da direita -->
 </div>
