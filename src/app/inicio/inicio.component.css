@@ -7,7 +7,7 @@
 .textoPerfil {
   font-family: Poppins, sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   color: var(--verde);
 }
 
@@ -78,7 +78,7 @@ label {
 }
 
 .redesSociais {
-  margin-top: 30vh;
+  margin-top: 20vh;
 }
 
 .fa {

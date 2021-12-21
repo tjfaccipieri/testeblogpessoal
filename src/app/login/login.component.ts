@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,17 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(){
   }
 
   entrar(){
-    let erro = <HTMLDivElement>(document.querySelector('#erro'))
-    erro.innerHTML = 'deu ruim'
-    erro.style.background = 'var(--vermelho-70)'
-    erro.style.color = '#721C24'
-    
+    this.router.navigate(['/inicio']);
   }
 
 }
