@@ -13,6 +13,7 @@
 
 .botao{
   background: transparent;
+  border: none;
   border-radius: 10px;
   font-family: Poppins, sans-serif;
   font-weight: 500;
@@ -52,4 +53,26 @@
 .sair:hover{
   background-color: #FFFFFF;
   color: var(--vermelho);
+}
+
+.publicar {
+  background-color: var(--verde);
+  color: #FFFFFF;
+}
+
+.publicar:hover {
+  background-color: var(--verde-hover);
+}
+
+form, .cardPostagem {
+  background: #fcfcfc;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: thin solid #e4e4e4;
+}
+
+label {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  margin: 5px 0;
 }

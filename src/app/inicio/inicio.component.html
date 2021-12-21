@@ -1,58 +1,139 @@
 <!-- ! navs não estão funcionando ainda... vai e não volta -->
-<div class="container-fluid d-flex mt-2">
+<div class="container-fluid d-flex mt-2 justify-content-center">
     <!-- Conteudo da sidebar esquerda -->
-    <div class="col-md-3 vh-100 pt-3 sticky-top">
-      <div class="w-75">
-        <div class="d-flex justify-content-around align-items-center">
-          <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
-          <p class='textoPerfil m-0'>Thiago Faccipieri</p>
-        </div>
-        
-        <div class="nav flex-column nav-pills mt-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <div>
-            <button class="botao minhasPostagens active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Minhas postagens</button>
-            <button class='botao perfil ms-auto mt-3'>Editar perfil</button>
-            <button class='botao sair ms-auto mt-3'>Sair</button>
-          </div>
-          <div class='mt-5 d-flex flex-column align-items-start'>
-            <p class='mt-4 textoPerfil'>Filtrar</p>
-            <button class="textoPerfil btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-            <button class="textoPerfil btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-          </div>
-        </div>
-        </div>
+  <div class="col-md-3 pt-3 sticky-top">
+    <div class="w-75">
+      <div class="d-flex justify-content-around align-items-center">
+        <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
+        <p class='textoPerfil m-0'>Thiago Faccipieri</p>
       </div>
-    
+      <div class="nav flex-column nav-pills mt-3 align-items-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button class="botao minhasPostagens ms-auto " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Minhas postagens</button>
+          <button class='botao perfil ms-auto mt-3'>Editar perfil</button>
+          <button class='botao sair ms-auto mt-3'>Sair</button>
+
+          <p class='mt-5 textoPerfil'>Filtrar</p>
+          <a class="textoPerfil ms-5 me-auto active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Todas as postagens</a>
+          <a class="textoPerfil ms-5 me-auto mt-3" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Postagens por tema</a>
+      </div>
+    </div>
+  </div>
     <!-- Conteudo da sidebar esquerda -->
 
-    <div class="col-md-6">
-      <div class="d-flex align-items-start">
+    <!-- Conteudo do feed cental -->
+  <div class="col-md-6 d-flex justify-content-center">
+    <div class="d-flex flex-column col-10">
+      <div id='novaPostagem'>
+        <p class='textoPerfil'>Fazer uma postagem</p>
+        <div class="row">
+          <div class="col-1">
+            <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
+          </div>
+          <div class="col-11">
+            <form class='d-flex w-100 flex-column'>
+              <div class="form-group">
+                <label for="titulo">Titulo:</label>
+                <input type="text" class="form-control" placeholder="Digite aqui o titulo da sua postagem">
+              </div>
+              <div class="form-group">
+                <label for="texto">Texto:</label>
+                <textarea type="" class="form-control" row='3' placeholder="Digite aqui o texto da sua postagem"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="tema">Selecionar tema:</label>
+                <p>Não encontrou o seu tema? <a href="">Cadastre um novo</a></p>
+                <select name="tema" id="tema" class="form-control">
+                  <option value="">Tema 01</option>
+                </select>
+              </div>
+              <button class='botao publicar w-50 ms-auto mt-3'>Publicar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Conteudo do feed central -->
+
+      <!-- restante do conteudo da Nav padrão do bootstrap -->
+      <div class="row mt-5">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">minhas postagens</div>
-          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            profile
+          <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <p class='textoPerfil'>Minhas postagens</p>
+          </div>
+          <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <p class='textoPerfil'>Todas as postagens</p>
+            
+            <!-- ! card da postagem -->
+            <div class="cardPostagem mb-3">
+              <div class='d-flex align-items-center'>
+                <div class="col-1">
+                  <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
+                </div>
+                <div class="col-11">
+                  <div class="d-flex justify-content-between px-3">
+                    <small class="textoPerfil my-0">Thiago Faccipieri</small>
+                    <small class='rounded-pill w-25 bg-info text-white p-2 text-center fw-bold'>Tema 01</small>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="d-flex flex-column px-3">
+                <p class='textoPerfil'>Titulo da postagem</p>
+                <p>Texto da postagem aqui</p>
+                <p class="ms-auto">15/12/2021 às 17:30</p>
+              </div>
+            </div>
+            
+            <div class="cardPostagem mb-3">
+              <div class='d-flex align-items-center'>
+                <div class="col-1">
+                  <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
+                </div>
+                <div class="col-11">
+                  <div class="d-flex justify-content-between px-3">
+                    <small class="textoPerfil my-0">Thiago Faccipieri</small>
+                    <small class='rounded-pill w-25 bg-info text-white p-2 text-center fw-bold'>Tema 01</small>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="d-flex flex-column px-3">
+                <p class='textoPerfil'>Titulo da postagem</p>
+                <p>Texto da postagem aqui</p>
+                <p class="ms-auto">15/12/2021 às 17:30</p>
+              </div>
+            </div>
+            <div class="cardPostagem mb-3">
+              <div class='d-flex align-items-center'>
+                <div class="col-1">
+                  <img src="https://github.com/tjfaccipieri.png" alt="Foto de perfil" class='fotoPerfil'>
+                </div>
+                <div class="col-11">
+                  <div class="d-flex justify-content-between px-3">
+                    <small class="textoPerfil my-0">Thiago Faccipieri</small>
+                    <small class='rounded-pill w-25 bg-info text-white p-2 text-center fw-bold'>Tema 01</small>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="d-flex flex-column px-3">
+                <p class='textoPerfil'>Titulo da postagem</p>
+                <p>Texto da postagem aqui</p>
+                <p class="ms-auto">15/12/2021 às 17:30</p>
+              </div>
+            </div>
+
+            <!-- ! card da postagem -->
           </div>
           <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-            sei la
+            <p class='textoPerfil'>Postagens por tema</p>
           </div>
         </div>
       </div>
     </div>
-
-
-</div>
-
-
-
-  <!-- <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <button class="botao minhasPostagens active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-    <button class="textoPerfil btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-    <button class="textoPerfil btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
   </div>
-  <div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
-    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-  </div> -->
+      <!-- restante do conteudo da Nav padrão do bootstrap -->
+
+<!-- sidebar da direita -->
+<div class="col-md-3"></div>
+<!-- sidebar da direita -->
+</div>
