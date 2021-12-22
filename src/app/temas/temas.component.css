@@ -1,0 +1,5 @@
+.textoDestaque {
+  color: var(--verde);
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+}

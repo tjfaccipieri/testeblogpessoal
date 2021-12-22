@@ -64,7 +64,7 @@
   background-color: var(--verde-hover);
 }
 
-form, .cardPostagem {
+.cardPostagem {
   background: #fcfcfc;
   padding: 1rem;
   border-radius: 1rem;
@@ -85,4 +85,10 @@ label {
   color: var(--azul);
   font-weight: bold;
   font-size: 3rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.fa:hover {
+  filter: brightness(0.5);
 }
