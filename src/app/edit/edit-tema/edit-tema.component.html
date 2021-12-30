@@ -1,0 +1,15 @@
+<div class="container-fluid mt-5">
+  
+  <h2 class='text-center'>Editar tema</h2>
+  <form class='d-flex flex-column align-items-center justify-content-center'>
+    <div class="form-group">
+      <label for="descricao">Nome do tema</label>
+      <input type="text" class="form-control w-100 mb-5" id="descricao" name='descricao' placeholder="De o nome do seu tema" [(ngModel)]="tema.descricao">
+    </div>
+    <button type="submit" class="btn btn-dark w-25" (click)="atualizarTema()">Atualizar Tema</button>
+  </form>
+</div>
+
+
+
+

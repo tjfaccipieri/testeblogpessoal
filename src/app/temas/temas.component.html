@@ -5,8 +5,8 @@
     <div class="d-flex justify-content-center">
       <div class="col-md-6">
         <form class="d-flex flex-column">
-          <input type="text" class="form-control" placeholder="De o nome do seu tema">
-          <button type="submit" class='btn btn-dark mx-auto mt-3 w-50'>Cadastrar</button>
+          <input type="text" class="form-control" name='descricao' id='descricao' placeholder="De o nome do seu tema" [(ngModel)]="tema.descricao">
+          <button type="submit" class='btn btn-dark mx-auto mt-3 w-50' (click)="postTema()">Cadastrar</button>
         </form>
       </div>
     </div>
@@ -22,32 +22,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Nome do tema</td>
+            <tr *ngFor='let tema of listaTemas'>
+              <td>{{tema.descricao}}</td>
               <td class='d-flex justify-content-around'>
-                <button type="button" class="btn btn-dark">Editar</button>
-                <button type="button" class="btn btn-dark">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Nome do tema</td>
-              <td class='d-flex justify-content-around'>
-                <button type="button" class="btn btn-dark">Editar</button>
-                <button type="button" class="btn btn-dark">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Nome do tema</td>
-              <td class='d-flex justify-content-around'>
-                <button type="button" class="btn btn-dark">Editar</button>
-                <button type="button" class="btn btn-dark">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Nome do tema</td>
-              <td class='d-flex justify-content-around'>
-                <button type="button" class="btn btn-dark">Editar</button>
-                <button type="button" class="btn btn-dark">Excluir</button>
+                <button type="button" class="btn btn-dark" [routerLink]="['/edit-tema', tema.id]">Editar</button>
+                <button type="button" class="btn btn-dark" [routerLink]="['/delete-tema', tema.id]">Excluir</button>
               </td>
             </tr>
           </tbody>
