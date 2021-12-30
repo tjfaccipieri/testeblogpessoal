@@ -90,6 +90,7 @@ export class InicioComponent implements OnInit {
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp;
       this.getAllPostagens();
+      this.getAllTemas();
       alert('Postagem realizada com sucesso!');
       this.postagem = new Postagem();
     });

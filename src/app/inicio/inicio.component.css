@@ -11,6 +11,10 @@
   color: var(--verde);
 }
 
+.textoTema{
+  font-size: 0.750rem
+}
+
 .botao{
   background: transparent;
   border: none;

@@ -50,6 +50,7 @@
           role="tab"
           aria-controls="v-pills-messages"
           aria-selected="false"
+          (click)="getAllTemas()"
           >Postagens por tema</a
         >
       </div>
@@ -151,6 +152,7 @@
                         p-2
                         text-center
                         fw-bold
+                        textoTema
                       "
                       >{{postagem.tema.descricao}}</small
                     >
@@ -185,6 +187,7 @@
               </div>
             </div>
           </div>
+          <!-- ! Todas as postagens -->
           <div
             class="tab-pane fade show active"
             id="v-pills-profile"
@@ -193,7 +196,6 @@
           >
             <p class="textoPerfil">Todas as postagens</p>
 
-            <!-- ! card da postagem -->
             <div
               class="cardPostagem mb-3"
               *ngFor="let postagem of listaPostagens"
@@ -210,7 +212,7 @@
                   <div
                     class="
                       d-flex
-                      justify-content-around
+                      justify-content-between
                       align-items-center
                       px-3
                     "
@@ -227,6 +229,7 @@
                         p-2
                         text-center
                         fw-bold
+                        textoTema
                       "
                       >{{ postagem.tema.descricao }}</small
                     >
@@ -243,16 +246,74 @@
                 </p>
               </div>
             </div>
-            <!-- ! card da postagem -->
           </div>
+          <!-- ! Fim todas as postagens -->
+
+          <!-- ? Postagens por tema -->
           <div
             class="tab-pane fade"
             id="v-pills-messages"
             role="tabpanel"
             aria-labelledby="v-pills-messages-tab"
           >
-            <p class="textoPerfil">Postagens por tema</p>
+          <h3 class="textoPerfil">Postagens por tema</h3>
+          <div class="row" *ngFor='let tema of listaTemas'>
+            <p class="textoPerfil"> - {{tema.descricao}}</p>
+            <div
+              class="cardPostagem mb-3"
+              *ngFor="let postagem of tema.postagem"
+            >
+              <div class="d-flex align-items-center">
+                <div class="col-1">
+                  <img
+                    [src]="postagem.usuario.foto"
+                    alt="Foto de perfil"
+                    class="fotoPerfil"
+                  />
+                </div>
+                <div class="col-11">
+                  <div
+                    class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                      px-3
+                    "
+                  >
+                    <small class="textoPerfil my-0">{{
+                      postagem.usuario.nome
+                    }}</small>
+                    <small
+                      class="
+                        rounded-pill
+                        w-25
+                        bg-info
+                        text-white
+                        p-2
+                        text-center
+                        fw-bold
+                        textoTema
+                      "
+                      >{{ tema.descricao }}</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="d-flex flex-column px-3">
+                <p class="textoPerfil">{{ postagem.titulo }}</p>
+                <p>{{ postagem.texto }}</p>
+                <p class="ms-auto">
+                  {{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "hh:mm" }}
+                </p>
+              </div>
+            </div>
           </div>
+
+
+          </div>
+          <!-- ? Fim postagens por tema -->
         </div>
       </div>
     </div>
