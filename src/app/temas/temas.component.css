@@ -3,3 +3,49 @@
   font-family: Poppins, sans-serif;
   font-weight: 500;
 }
+
+.botao{
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  /* width: 90%; */
+  height: 45px;
+  transition: 0.3s ease-in-out;
+}
+
+.cadastroTema {
+  border: 2px solid var(--verde);
+  color: var(--verde);
+}
+
+.cadastroTema:hover{
+  background-color: var(--verde);
+  color: #FFFFFF;
+}
+
+.editarTema {
+  border: 2px solid var(--azul);
+  color: var(--azul);
+  font-size: 16px;
+  height: 30px;
+}
+
+.editarTema:hover {
+  background-color: var(--azul);
+  color: #FFFFFF;
+}
+
+.deletarTema {
+  border: 2px solid var(--vermelho);
+  color: var(--vermelho);
+  font-size: 16px;
+  height: 30px;
+}
+
+.deletarTema:hover {
+  background-color: var(--vermelho);
+  color: #FFFFFF;
+}

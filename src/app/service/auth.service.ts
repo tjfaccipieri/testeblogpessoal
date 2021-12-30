@@ -22,6 +22,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  getAllUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>('https://bp2022.herokuapp.com/usuarios', this.token);
+  }
+
   getUsuarioById(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`https://bp2022.herokuapp.com/usuarios/${id}`, this.token);
   }
@@ -32,6 +36,10 @@ export class AuthService {
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>('https://bp2022.herokuapp.com/usuarios/cadastrar', usuario);
+  }
+
+  atualizar(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>('https://bp2022.herokuapp.com/usuarios/atualizar', usuario, this.token);
   }
 
   logado(){

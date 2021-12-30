@@ -1,19 +1,19 @@
 <div class="container">
   <div class="container-fluid mt-3">
-    <h3 class='text-center textoDestaque'>Cadastrar temas</h3>
+    <h1 class='text-center textoDestaque'>Cadastrar temas</h1>
 
     <div class="d-flex justify-content-center">
       <div class="col-md-6">
         <form class="d-flex flex-column">
           <input type="text" class="form-control" name='descricao' id='descricao' placeholder="De o nome do seu tema" [(ngModel)]="tema.descricao">
-          <button type="submit" class='btn btn-dark mx-auto mt-3 w-50' (click)="postTema()">Cadastrar</button>
+          <button type="submit" class='botao cadastroTema mx-auto mt-3 w-50' (click)="postTema()">Cadastrar</button>
         </form>
       </div>
     </div>
-    <hr class="">
+    <hr class="my-5">
     <div class="d-flex justify-content-center">
-      <div class="col-md-6">
-        <h3 class='text-center textoDestaque'>Temas cadastrados</h3>
+      <div class="col-md-8">
+        <h2 class='text-center textoDestaque'>Temas cadastrados</h2>
         <table class='w-100 table table-striped'>
           <thead>
             <tr>
@@ -25,8 +25,8 @@
             <tr *ngFor='let tema of listaTemas'>
               <td>{{tema.descricao}}</td>
               <td class='d-flex justify-content-around'>
-                <button type="button" class="btn btn-dark" [routerLink]="['/edit-tema', tema.id]">Editar</button>
-                <button type="button" class="btn btn-dark" [routerLink]="['/delete-tema', tema.id]">Excluir</button>
+                <button type="button" class="botao editarTema w-25" [routerLink]="['/edit-tema', tema.id]">Editar</button>
+                <button type="button" class="botao deletarTema w-25" [routerLink]="['/delete-tema', tema.id]">Excluir</button>
               </td>
             </tr>
           </tbody>
