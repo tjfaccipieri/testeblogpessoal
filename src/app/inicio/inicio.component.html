@@ -131,7 +131,7 @@
           >
             <p class="textoPerfil">Minhas postagens</p>
 
-            <div class="cardPostagem mb-3" *ngFor='let postagem of usuario.postagem'>
+            <div class="cardPostagem mb-3" *ngFor='let postagem of usuario.postagem  | orderBy: key:reverse'>
               <div class="d-flex align-items-center">
                 <div class="col-1">
                   <img
@@ -164,7 +164,7 @@
                 <p class="textoPerfil">{{postagem.titulo}}</p>
                 <p>{{postagem.texto}}</p>
                 <p class="ms-auto">{{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "hh:mm" }}</p>
+                  {{ postagem.data | date: "HH:mm" }}</p>
               </div>
               <hr />
               <div class="d-flex justify-content-around">
@@ -198,7 +198,7 @@
 
             <div
               class="cardPostagem mb-3"
-              *ngFor="let postagem of listaPostagens"
+              *ngFor="let postagem of listaPostagens | orderBy: key:reverse"
             >
               <div class="d-flex align-items-center">
                 <div class="col-1">
@@ -242,7 +242,7 @@
                 <p>{{ postagem.texto }}</p>
                 <p class="ms-auto">
                   {{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "hh:mm" }}
+                  {{ postagem.data | date: "HH:mm"  }}
                 </p>
               </div>
             </div>
@@ -261,7 +261,7 @@
             <p class="textoPerfil"> - {{tema.descricao}}</p>
             <div
               class="cardPostagem mb-3"
-              *ngFor="let postagem of tema.postagem"
+              *ngFor="let postagem of tema.postagem  | orderBy: key:reverse"
             >
               <div class="d-flex align-items-center">
                 <div class="col-1">
@@ -305,7 +305,7 @@
                 <p>{{ postagem.texto }}</p>
                 <p class="ms-auto">
                   {{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "hh:mm" }}
+                  {{ postagem.data | date: "HH:mm" }}
                 </p>
               </div>
             </div>

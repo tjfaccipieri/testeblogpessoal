@@ -1,3 +1,4 @@
+import { AlertasService } from './../service/alertas.service';
 import { environment } from './../../environments/environment.prod';
 import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   usuarioLogin: UsuarioLogin = new UsuarioLogin();
 
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService, private alerta: AlertasService) { }
 
   ngOnInit(){
     window.scroll(0,0);
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/inicio']);
     }, err => {
       if (err.status == 401){
-        alert("Usuário ou senha inválidos!");
+        this.alerta.showAlertDanger("Usuário ou senha inválidos!");
       }
     }
     );
