@@ -1,0 +1,410 @@
+<div class="container-fluid d-flex mt-2 justify-content-center">
+  <!-- Conteudo da sidebar esquerda -->
+  <div class="col-md-3">
+    <div class="w-75 pt-3 sticky-top">
+      <div class="d-flex justify-content-around align-items-center">
+        <img src="{{ foto }}" alt="Foto de perfil" class="fotoPerfil" />
+        <p class="textoPerfil m-0 ms-3">{{ nome }}</p>
+      </div>
+      <div
+        class="nav flex-column nav-pills mt-3 align-items-center"
+        id="v-pills-tab"
+        role="tablist"
+        aria-orientation="vertical"
+      >
+        <button
+          class="botao minhasPostagens ms-auto"
+          id="v-pills-home-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#v-pills-home"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-home"
+          aria-selected="true"
+          (click)='getUsuarioById()'
+        >
+          Minhas postagens
+        </button>
+
+        <button class="botao perfil ms-auto mt-3">Editar perfil</button>
+        <button class="botao sair ms-auto mt-3" (click)="sair()">Sair</button>
+
+        <p class="mt-5 textoPerfil">Filtrar</p>
+        <a
+          class="textoPerfil ms-5 me-auto active"
+          id="v-pills-profile-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#v-pills-profile"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false"
+          >Todas as postagens</a
+        >
+        <a
+          class="textoPerfil ms-5 me-auto mt-3"
+          id="v-pills-messages-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#v-pills-messages"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-messages"
+          aria-selected="false"
+          >Postagens por tema</a
+        >
+      </div>
+    </div>
+  </div>
+  <!-- Conteudo da sidebar esquerda -->
+
+  <!-- Conteudo do feed cental -->
+  <div class="col-md-6 d-flex justify-content-center border-start border-end">
+    <div class="d-flex flex-column col-10">
+      <div id="novaPostagem">
+        <p class="textoPerfil">Fazer uma postagem</p>
+        <div class="row">
+          <div class="col-1 me-3">
+            <img src="{{ foto }}" alt="Foto de perfil" class="fotoPerfil" />
+          </div>
+          <div class="col-10">
+            <form class="d-flex w-100 flex-column cardPostagem">
+              <div class="form-group">
+                <label for="titulo">Titulo:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Digite aqui o titulo da sua postagem"
+                  name="titulo"
+                  id="titulo"
+                  [(ngModel)]="postagem.titulo"
+                />
+              </div>
+              <div class="form-group">
+                <label for="texto">Texto:</label>
+                <textarea
+                  type=""
+                  class="form-control"
+                  row="3"
+                  placeholder="Digite aqui o texto da sua postagem"
+                  name="texto"
+                  id="texto"
+                  [(ngModel)]="postagem.texto"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="tema">Selecionar tema:</label>
+                <p>
+                  Não encontrou o seu tema?
+                  <a routerLink="/temas">Cadastre um novo</a>
+                </p>
+                <select
+                  name="tema"
+                  id="tema"
+                  class="form-control"
+                  (change)="getTemaById()"
+                  [(ngModel)]="idTema"
+                >
+                  <option value="" disabled selected hidden>
+                    Selecione um tema
+                  </option>
+                  <option *ngFor="let tema of listaTemas" value="{{tema.id}}">
+                    {{ tema.descricao }}
+                  </option>
+                </select>
+              </div>
+              <button class="botao publicar w-50 ms-auto mt-3" (click)="postar()">Publicar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Conteudo do feed central -->
+
+      <!-- restante do conteudo da Nav padrão do bootstrap -->
+      <div class="row mt-5">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div
+            class="tab-pane fade"
+            id="v-pills-home"
+            role="tabpanel"
+            aria-labelledby="v-pills-home-tab"
+          >
+            <p class="textoPerfil">Minhas postagens</p>
+
+            <div class="cardPostagem mb-3" *ngFor='let postagem of usuario.postagem'>
+              <div class="d-flex align-items-center">
+                <div class="col-1">
+                  <img
+                    src="{{usuario.foto}}"
+                    alt="Foto de perfil"
+                    class="fotoPerfil"
+                  />
+                </div>
+                <div class="col-11">
+                  <div class="d-flex justify-content-between px-3">
+                    <small class="textoPerfil my-0">{{usuario.nome}}</small>
+                    <small
+                      class="
+                        rounded-pill
+                        w-25
+                        bg-info
+                        text-white
+                        p-2
+                        text-center
+                        fw-bold
+                      "
+                      >{{postagem.tema.descricao}}</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="d-flex flex-column px-3">
+                <p class="textoPerfil">{{postagem.titulo}}</p>
+                <p>{{postagem.texto}}</p>
+                <p class="ms-auto">{{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "hh:mm" }}</p>
+              </div>
+              <hr />
+              <div class="d-flex justify-content-around">
+                <button
+                  class="botao sair w-25"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deletePostagem"
+                  (click)='getPostagemById(postagem.id)'
+                >
+                  Apagar
+                </button>
+                <button
+                  class="botao perfil w-25"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editPostagem"
+                  (click)='getPostagemById(postagem.id)'
+                >
+                  Editar
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade show active"
+            id="v-pills-profile"
+            role="tabpanel"
+            aria-labelledby="v-pills-profile-tab"
+          >
+            <p class="textoPerfil">Todas as postagens</p>
+
+            <!-- ! card da postagem -->
+            <div
+              class="cardPostagem mb-3"
+              *ngFor="let postagem of listaPostagens"
+            >
+              <div class="d-flex align-items-center">
+                <div class="col-1">
+                  <img
+                    [src]="postagem.usuario.foto"
+                    alt="Foto de perfil"
+                    class="fotoPerfil"
+                  />
+                </div>
+                <div class="col-11">
+                  <div
+                    class="
+                      d-flex
+                      justify-content-around
+                      align-items-center
+                      px-3
+                    "
+                  >
+                    <small class="textoPerfil my-0">{{
+                      postagem.usuario.nome
+                    }}</small>
+                    <small
+                      class="
+                        rounded-pill
+                        w-25
+                        bg-info
+                        text-white
+                        p-2
+                        text-center
+                        fw-bold
+                      "
+                      >{{ postagem.tema.descricao }}</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="d-flex flex-column px-3">
+                <p class="textoPerfil">{{ postagem.titulo }}</p>
+                <p>{{ postagem.texto }}</p>
+                <p class="ms-auto">
+                  {{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "hh:mm" }}
+                </p>
+              </div>
+            </div>
+            <!-- ! card da postagem -->
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-messages"
+            role="tabpanel"
+            aria-labelledby="v-pills-messages-tab"
+          >
+            <p class="textoPerfil">Postagens por tema</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- restante do conteudo da Nav padrão do bootstrap -->
+
+  <!-- sidebar da direita -->
+  <div class="col-md-3">
+    <div
+      class="
+        sticky-top
+        d-flex
+        flex-column
+        justify-content-between
+        align-items-center
+        lateral
+      "
+    >
+      <div class="w-75 pt-3 mb-5">
+        <input
+          type="text"
+          placeholder="Pesquise uma postagem"
+          class="form-control cardPostagem p-2 px-4"
+        />
+      </div>
+      <div
+        class="
+          redesSociais
+          d-flex
+          flex-column
+          align-items-center
+          justify-content-center
+          w-75
+        "
+      >
+        <p class="textoPerfil text-center">
+          Siga-nos nas <br />
+          redes sociais
+        </p>
+        <hr class="w-100" />
+        <i class="fa fa-instagram mb-2"></i>
+        <i class="fa fa-facebook-f"></i>
+        <hr class="w-100" />
+        <p class="text-center">
+          &copy; 2021 Copyright: <br />
+          brasil.generation.org
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar da direita -->
+</div>
+
+<!-- ! Inicio dos modais de postagem -->
+<!-- Modal delete de postagem -->
+<div
+  class="modal fade"
+  id="deletePostagem"
+  tabindex="-1"
+  aria-labelledby="deletePostagemLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deletePostagemLabel">Apagar postagem</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Você tem certeza que deseja apagar esta postagem?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="botao sair w-25" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button class="botao publicar w-25 ms-auto mt-3" (click)="deletar()" data-bs-dismiss="modal">Apagar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal edição de postagem -->
+<div
+  class="modal fade"
+  id="editPostagem"
+  tabindex="-1"
+  aria-labelledby="editPostagemLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title textoPerfil" id="editPostagemLabel">
+          Atualizar postagem
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="d-flex w-100 flex-column">
+          <div class="form-group">
+            <label for="titulo">Titulo:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Digite aqui o titulo da sua postagem"
+              name='titulo'
+              id="titulo"
+              [(ngModel)]="postagem.titulo"
+            />
+          </div>
+          <div class="form-group">
+            <label for="texto">Texto:</label>
+            <textarea
+              type=""
+              class="form-control"
+              row="3"
+              placeholder="Digite aqui o texto da sua postagem"
+              name='texto'
+              id="texto"
+              [(ngModel)]="postagem.texto"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tema">Selecionar tema:</label>
+            <select name="tema" id="tema" class="form-control" (change)="getTemaById()"
+            [(ngModel)]="idTema">
+            <option value="" disabled selected hidden>
+              Selecione um tema
+            </option>
+            <option *ngFor="let tema of listaTemas" value="{{tema.id}}">
+              {{ tema.descricao }}
+            </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="botao sair w-25" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button class="botao publicar w-25 ms-auto mt-3" (click)="editar()" data-bs-dismiss="modal">Atualizar</button>
+      </div>
+    </div>
+  </div>
+</div>

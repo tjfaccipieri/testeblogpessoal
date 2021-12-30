@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+  --verde: #20BEAD;
+  --verde-hover: #15978a;
+  --verde-25: #20beae40;
+  --vermelho: #F4AEC5;
+  --vermelho-70: #F4AEB6B2;
+  --azul: #1AB6D6;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}

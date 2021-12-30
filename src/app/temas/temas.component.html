@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="container-fluid mt-3">
+    <h3 class='text-center textoDestaque'>Cadastrar temas</h3>
+
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6">
+        <form class="d-flex flex-column">
+          <input type="text" class="form-control" name='descricao' id='descricao' placeholder="De o nome do seu tema" [(ngModel)]="tema.descricao">
+          <button type="submit" class='btn btn-dark mx-auto mt-3 w-50' (click)="postTema()">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+    <hr class="">
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6">
+        <h3 class='text-center textoDestaque'>Temas cadastrados</h3>
+        <table class='w-100 table table-striped'>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th class='text-center'>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let tema of listaTemas'>
+              <td>{{tema.descricao}}</td>
+              <td class='d-flex justify-content-around'>
+                <button type="button" class="btn btn-dark" [routerLink]="['/edit-tema', tema.id]">Editar</button>
+                <button type="button" class="btn btn-dark" [routerLink]="['/delete-tema', tema.id]">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

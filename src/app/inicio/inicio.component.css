@@ -1,0 +1,94 @@
+.fotoPerfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.textoPerfil {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--verde);
+}
+
+.botao{
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  width: 90%;
+  height: 45px;
+  transition: 0.3s ease-in-out;
+}
+
+.minhasPostagens {
+  border: 2px solid var(--verde);
+  color: var(--verde);
+}
+
+.minhasPostagens:hover{
+  background-color: var(--verde);
+  color: #FFFFFF;
+}
+
+.perfil {
+  border: 2px solid var(--azul);
+  background-color: var(--azul);
+  color: #FFFFFF;
+}
+
+.perfil:hover{
+  background-color: #FFFFFF;
+  color: var(--azul);
+}
+
+.sair {
+  border: 2px solid var(--vermelho);
+  background-color: var(--vermelho);
+  color: #FFFFFF;
+}
+
+.sair:hover{
+  background-color: #FFFFFF;
+  color: var(--vermelho);
+}
+
+.publicar {
+  background-color: var(--verde);
+  color: #FFFFFF;
+}
+
+.publicar:hover {
+  background-color: var(--verde-hover);
+}
+
+.cardPostagem {
+  background: #fcfcfc;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: thin solid #e4e4e4;
+}
+
+label {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.lateral {
+  height: 90vh;
+}
+
+.fa {
+  color: var(--azul);
+  font-weight: bold;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.fa:hover {
+  filter: brightness(0.5);
+}
