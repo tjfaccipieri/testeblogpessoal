@@ -1,27 +1,35 @@
-<div class="container-fluid d-flex mt-2 justify-content-center">
+<div
+  class="
+    container-fluid
+    d-flex
+    flex-column flex-md-row
+    mt-2
+    justify-content-center
+  "
+>
   <!-- Conteudo da sidebar esquerda -->
-  <div class="col-md-3">
-    <div class="w-75 pt-3 sticky-top">
-      <div class="d-flex justify-content-around align-items-center">
+  <div class="col-md-3 col-sm-12 d-flex justify-content-center">
+    <div class="w-75 pt-3 d-flex flex-column mx-auto sticky-top align-self-start">
+      <div class="d-flex justify-content-between align-items-center">
         <img src="{{ foto }}" alt="Foto de perfil" class="fotoPerfil" />
         <p class="textoPerfil m-0 ms-3">{{ nome }}</p>
       </div>
       <div
-        class="nav flex-column nav-pills mt-3 align-items-center"
+        class="nav flex-column nav-pills mt-3"
         id="v-pills-tab"
         role="tablist"
         aria-orientation="vertical"
       >
         <button
           class="botao minhasPostagens ms-auto"
-          id="v-pills-home-tab"
+          id="minhasPostagens-tab"
           data-bs-toggle="pill"
-          data-bs-target="#v-pills-home"
+          data-bs-target="#minhasPostagens"
           type="button"
           role="tab"
-          aria-controls="v-pills-home"
+          aria-controls="minhasPostagens"
           aria-selected="true"
-          (click)='getUsuarioById()'
+          (click)="getUsuarioById()"
         >
           Minhas postagens
         </button>
@@ -31,24 +39,24 @@
 
         <p class="mt-5 textoPerfil">Filtrar</p>
         <a
-          class="textoPerfil ms-5 me-auto active"
-          id="v-pills-profile-tab"
+          class="textoPerfil me-auto active"
+          id="todasPostagens-tab"
           data-bs-toggle="pill"
-          data-bs-target="#v-pills-profile"
+          data-bs-target="#todasPostagens"
           type="button"
           role="tab"
-          aria-controls="v-pills-profile"
+          aria-controls="todasPostagens"
           aria-selected="false"
           >Todas as postagens</a
         >
         <a
-          class="textoPerfil ms-5 me-auto mt-3"
-          id="v-pills-messages-tab"
+          class="textoPerfil me-auto mt-3"
+          id="postagensTema-tab"
           data-bs-toggle="pill"
-          data-bs-target="#v-pills-messages"
+          data-bs-target="#postagensTema"
           type="button"
           role="tab"
-          aria-controls="v-pills-messages"
+          aria-controls="postagensTema"
           aria-selected="false"
           (click)="getAllTemas()"
           >Postagens por tema</a
@@ -108,12 +116,17 @@
                   <option value="" disabled selected hidden>
                     Selecione um tema
                   </option>
-                  <option *ngFor="let tema of listaTemas" value="{{tema.id}}">
+                  <option *ngFor="let tema of listaTemas" value="{{ tema.id }}">
                     {{ tema.descricao }}
                   </option>
                 </select>
               </div>
-              <button class="botao publicar w-50 ms-auto mt-3" (click)="postar()">Publicar</button>
+              <button
+                class="botao publicar w-50 ms-auto mt-3"
+                (click)="postar()"
+              >
+                Publicar
+              </button>
             </form>
           </div>
         </div>
@@ -125,24 +138,27 @@
         <div class="tab-content" id="v-pills-tabContent">
           <div
             class="tab-pane fade"
-            id="v-pills-home"
+            id="minhasPostagens"
             role="tabpanel"
-            aria-labelledby="v-pills-home-tab"
+            aria-labelledby="minhasPostagens-tab"
           >
             <p class="textoPerfil">Minhas postagens</p>
 
-            <div class="cardPostagem mb-3" *ngFor='let postagem of usuario.postagem  | orderBy: key:reverse'>
+            <div
+              class="cardPostagem mb-3"
+              *ngFor="let postagem of usuario.postagem | orderBy: key:reverse"
+            >
               <div class="d-flex align-items-center">
                 <div class="col-1">
                   <img
-                    src="{{usuario.foto}}"
+                    src="{{ usuario.foto }}"
                     alt="Foto de perfil"
                     class="fotoPerfil"
                   />
                 </div>
                 <div class="col-11">
                   <div class="d-flex justify-content-between px-3">
-                    <small class="textoPerfil my-0">{{usuario.nome}}</small>
+                    <small class="textoPerfil my-0">{{ usuario.nome }}</small>
                     <small
                       class="
                         rounded-pill
@@ -154,17 +170,19 @@
                         fw-bold
                         textoTema
                       "
-                      >{{postagem.tema.descricao}}</small
+                      >{{ postagem.tema.descricao }}</small
                     >
                   </div>
                 </div>
               </div>
               <hr />
               <div class="d-flex flex-column px-3">
-                <p class="textoPerfil">{{postagem.titulo}}</p>
-                <p>{{postagem.texto}}</p>
-                <p class="ms-auto">{{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "HH:mm" }}</p>
+                <p class="textoPerfil">{{ postagem.titulo }}</p>
+                <p>{{ postagem.texto }}</p>
+                <p class="ms-auto">
+                  {{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "HH:mm" }}
+                </p>
               </div>
               <hr />
               <div class="d-flex justify-content-around">
@@ -172,7 +190,7 @@
                   class="botao sair w-25"
                   data-bs-toggle="modal"
                   data-bs-target="#deletePostagem"
-                  (click)='getPostagemById(postagem.id)'
+                  (click)="getPostagemById(postagem.id)"
                 >
                   Apagar
                 </button>
@@ -180,7 +198,7 @@
                   class="botao perfil w-25"
                   data-bs-toggle="modal"
                   data-bs-target="#editPostagem"
-                  (click)='getPostagemById(postagem.id)'
+                  (click)="getPostagemById(postagem.id)"
                 >
                   Editar
                 </button>
@@ -190,9 +208,9 @@
           <!-- ! Todas as postagens -->
           <div
             class="tab-pane fade show active"
-            id="v-pills-profile"
+            id="todasPostagens"
             role="tabpanel"
-            aria-labelledby="v-pills-profile-tab"
+            aria-labelledby="todasPostagens-tab"
           >
             <p class="textoPerfil">Todas as postagens</p>
 
@@ -242,7 +260,7 @@
                 <p>{{ postagem.texto }}</p>
                 <p class="ms-auto">
                   {{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "HH:mm"  }}
+                  {{ postagem.data | date: "HH:mm" }}
                 </p>
               </div>
             </div>
@@ -252,66 +270,64 @@
           <!-- ? Postagens por tema -->
           <div
             class="tab-pane fade"
-            id="v-pills-messages"
+            id="postagensTema"
             role="tabpanel"
-            aria-labelledby="v-pills-messages-tab"
+            aria-labelledby="postagensTema-tab"
           >
-          <h3 class="textoPerfil">Postagens por tema</h3>
-          <div class="row" *ngFor='let tema of listaTemas'>
-            <p class="textoPerfil"> - {{tema.descricao}}</p>
-            <div
-              class="cardPostagem mb-3"
-              *ngFor="let postagem of tema.postagem  | orderBy: key:reverse"
-            >
-              <div class="d-flex align-items-center">
-                <div class="col-1">
-                  <img
-                    [src]="postagem.usuario.foto"
-                    alt="Foto de perfil"
-                    class="fotoPerfil"
-                  />
-                </div>
-                <div class="col-11">
-                  <div
-                    class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                      px-3
-                    "
-                  >
-                    <small class="textoPerfil my-0">{{
-                      postagem.usuario.nome
-                    }}</small>
-                    <small
+            <h3 class="textoPerfil">Postagens por tema</h3>
+            <div class="row" *ngFor="let tema of listaTemas">
+              <p class="textoPerfil">- {{ tema.descricao }}</p>
+              <div
+                class="cardPostagem mb-3"
+                *ngFor="let postagem of tema.postagem | orderBy: key:reverse"
+              >
+                <div class="d-flex align-items-center">
+                  <div class="col-1">
+                    <img
+                      [src]="postagem.usuario.foto"
+                      alt="Foto de perfil"
+                      class="fotoPerfil"
+                    />
+                  </div>
+                  <div class="col-11">
+                    <div
                       class="
-                        rounded-pill
-                        w-25
-                        bg-info
-                        text-white
-                        p-2
-                        text-center
-                        fw-bold
-                        textoTema
+                        d-flex
+                        justify-content-between
+                        align-items-center
+                        px-3
                       "
-                      >{{ tema.descricao }}</small
                     >
+                      <small class="textoPerfil my-0">{{
+                        postagem.usuario.nome
+                      }}</small>
+                      <small
+                        class="
+                          rounded-pill
+                          w-25
+                          bg-info
+                          text-white
+                          p-2
+                          text-center
+                          fw-bold
+                          textoTema
+                        "
+                        >{{ tema.descricao }}</small
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-              <hr />
-              <div class="d-flex flex-column px-3">
-                <p class="textoPerfil">{{ postagem.titulo }}</p>
-                <p>{{ postagem.texto }}</p>
-                <p class="ms-auto">
-                  {{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "HH:mm" }}
-                </p>
+                <hr />
+                <div class="d-flex flex-column px-3">
+                  <p class="textoPerfil">{{ postagem.titulo }}</p>
+                  <p>{{ postagem.texto }}</p>
+                  <p class="ms-auto">
+                    {{ postagem.data | date: "dd/MM/yyyy" }} às
+                    {{ postagem.data | date: "HH:mm" }}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-
-
           </div>
           <!-- ? Fim postagens por tema -->
         </div>
@@ -394,7 +410,13 @@
         <button type="button" class="botao sair w-25" data-bs-dismiss="modal">
           Cancelar
         </button>
-        <button class="botao publicar w-25 ms-auto mt-3" (click)="deletar()" data-bs-dismiss="modal">Apagar</button>
+        <button
+          class="botao publicar w-25 ms-auto mt-3"
+          (click)="deletar()"
+          data-bs-dismiss="modal"
+        >
+          Apagar
+        </button>
       </div>
     </div>
   </div>
@@ -429,7 +451,7 @@
               type="text"
               class="form-control"
               placeholder="Digite aqui o titulo da sua postagem"
-              name='titulo'
+              name="titulo"
               id="titulo"
               [(ngModel)]="postagem.titulo"
             />
@@ -441,21 +463,26 @@
               class="form-control"
               row="3"
               placeholder="Digite aqui o texto da sua postagem"
-              name='texto'
+              name="texto"
               id="texto"
               [(ngModel)]="postagem.texto"
             ></textarea>
           </div>
           <div class="form-group">
             <label for="tema">Selecionar tema:</label>
-            <select name="tema" id="tema" class="form-control" (change)="getTemaById()"
-            [(ngModel)]="idTema">
-            <option value="" disabled selected hidden>
-              Selecione um tema
-            </option>
-            <option *ngFor="let tema of listaTemas" value="{{tema.id}}">
-              {{ tema.descricao }}
-            </option>
+            <select
+              name="tema"
+              id="tema"
+              class="form-control"
+              (change)="getTemaById()"
+              [(ngModel)]="idTema"
+            >
+              <option value="" disabled selected hidden>
+                Selecione um tema
+              </option>
+              <option *ngFor="let tema of listaTemas" value="{{ tema.id }}">
+                {{ tema.descricao }}
+              </option>
             </select>
           </div>
         </form>
@@ -464,7 +491,13 @@
         <button type="button" class="botao sair w-25" data-bs-dismiss="modal">
           Cancelar
         </button>
-        <button class="botao publicar w-25 ms-auto mt-3" (click)="editar()" data-bs-dismiss="modal">Atualizar</button>
+        <button
+          class="botao publicar w-25 ms-auto mt-3"
+          (click)="editar()"
+          data-bs-dismiss="modal"
+        >
+          Atualizar
+        </button>
       </div>
     </div>
   </div>
